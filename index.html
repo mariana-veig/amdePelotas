@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Digite algo para pesquisar!');
       return;
     }
-
     // Normaliza termo
     const term = normalize(rawTerm);
 
@@ -30,10 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll(selectors).forEach(node => {
       node.innerHTML = node.textContent; 
     });
-
     const nodes = Array.from(document.querySelectorAll(selectors));
     let found = false;
-
+      
     nodes.forEach(node => {
       const text = node.textContent;
       const normalizedText = normalize(text);
@@ -62,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-
-
+    
     <body>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <!--barra de navegação-->
         <nav class="nav">
             <a href="#inicio">Inicio</a>
@@ -248,4 +246,5 @@ Doações podem ser feitas diretamente no asilo: P. Antônio Zattera, 338 – Ce
     </div>
   </footer>
     </body>
+
     </html>
