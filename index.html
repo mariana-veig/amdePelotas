@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>asilo-de-mendigos-de-pelotas</title>
+<link rel="stylesheet" href="style.css">
+    </head>
+
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('searchForm');
+  const input = document.getElementById('campoBusca');
+
+  if (!form || !input) return;
+
+  const selectors = 'h1, h2, h3, h4, p, li, .bloco h2, .conteudo-texto h4';
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const rawTerm = input.value.trim();
+    if (!rawTerm) {
+      alert('Digite algo para pesquisar!');
+      return;
+    }
+
+    // Normaliza termo
+    const term = normalize(rawTerm);
+
+    // Remove destaques anteriores
+    document.querySelectorAll(selectors).forEach(node => {
+      node.innerHTML = node.textContent; 
+    });
+
+    const nodes = Array.from(document.querySelectorAll(selectors));
+    let found = false;
+
+    nodes.forEach(node => {
+      const text = node.textContent;
+      const normalizedText = normalize(text);
+
+      if (normalizedText.includes(term)) {
+        const regex = new RegExp(`(${rawTerm})`, 'gi');
+        node.innerHTML = text.replace(regex, '<mark>$1</mark>');
+
+        if (!found) {
+          node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          found = true;
+        }
+      }
+    });
+
+    if (!found) {
+      alert('Nenhum resultado encontrado!');
+    }
+  });
+
+  function normalize(str) {
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+  }
+});
+</script>
+
+
+    <body>
+      <!--barra de navegação-->
+        <nav class="nav">
+            <a href="#inicio">Inicio</a>
+            <a href="#sobre">sobre</a>
+            <a href="#comoajudar">como ajudar</a>
+            <a href="#eventos">Eventos</a>
+            <a href="#contato">contato</a>
+
+<!--barra de pesquisa-->
+     <div class="barra-pesquisa">
+  <form id="searchForm">
+    <input type="text" id="campoBusca" placeholder="buscar...">
+    <button type="submit">Pesquisar</button>
+  </form>
+</div>
+  
+        </nav>
+
+        <section id="inicio">
+<section class="img">
+      <h1>ASILO DE MENDIGOS DE PELOTAS</h1>
+      <h2>Um lar para quem mais precisa, ajude a transformar vidas.</h2>
+      <p>O Asilo de Mendigos é muito mais do que um abrigo: ele é uma testemunha viva da história de Pelotas, das transformações sociais, da relação entre caridade, cidadania e envelhecimento. Ele desafia estereótipos sobre velhice, abandono e vulnerabilidade.</p>
+    <a href="https://www.instagram.com/asilodemendigosdepelotas/" class="botao-doacao">faça uma doação</a>
+    </section>
+        </section>
+<!--linha pra dividir e ficar bonito-->
+<hr>
+
+<!--definição dos blocos de conteudo-->
+<section id="sobre">
+
+<h3>SOBRE</h3>
+<div class="container-de-blocos">
+<div class="bloco" onclick="abrirModal('A missão do Lar de Santana é oferecer acolhimento digno, cuidados integrais e qualidade de vida a pessoas idosas em situação de vulnerabilidade, promovendo o respeito, a solidariedade e a inclusão social. A instituição atua com base em valores fundamentais, como a dignidade, garantindo que cada residente seja tratado com respeito e consideração por sua história; o cuidado, com atendimento humanizado nas dimensões física, emocional e social; e a solidariedade, que envolve o apoio da comunidade em ações coletivas pelo bem comum. Além disso, a transparência na gestão, a empatia no trato com os idosos e o comprometimento diário com a transformação de vidas são princípios que orientam todo o trabalho realizado dentro da casa.')">
+  <img src="https://www.brigadamilitar.rs.gov.br/upload/recortes/202006/10143235_112341_GDO.jpg" alt="imagem do asilo de mendigos de Pelotas">  
+    <h2>Missão e Valores</h2>
+  </div>
+
+  <div class="bloco" onclick="abrirModal('O Asilo de Mendigos de Pelotas foi fundado em 1885 pelo jornalista Antônio Joaquim Dias, com a missão de acolher pessoas idosas em situação de vulnerabilidade. A construção do prédio teve início em 1887, com projeto do engenheiro José de Magalhães, e foi inaugurada em 1892. Em 1928, a fachada passou por reforma conduzida pelo arquiteto Caetano Casaretto.  Desde sua fundação, a instituição se manteve com o apoio da comunidade pelotense, doações voluntárias e trabalho solidário. Sempre com foco no cuidado, no acolhimento e na dignidade dos idosos, tornou-se uma referência na cidade e símbolo de solidariedade.        Hoje, com mais de 140 anos de história, a instituição passa por uma nova fase, adotando o nome Lar de Santana, refletindo uma visão mais acolhedora e humanizada. O asilo segue oferecendo moradia, alimentação e cuidados integrais a dezenas de idosos, contando principalmente com a ajuda da sociedade para continuar sua missão.')">
+     <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Asilo_de_Mendigos_16.09.2023.jpg" alt="imagem da fachada do asilo de mendigos de Pelotas">
+     <h2>História</h2>
+  </div>
+
+ <div class="bloco" onclick="abrirModal('O edifício que abriga o asilo foi projetado pelo engenheiro José de Magalhães, com planta retangular, distribuída em alas que envolvem dois pátios internos. A pedra fundamental foi lançada em 1887, e a inauguração ocorreu em 1892.Em 1928, o prédio passou por reforma da fachada, conduzida pelo arquiteto Caetano Casaretto, que trouxe ao edifício elementos arquitetônicos mais refinados e visuais que até hoje marcam sua estética.     Por décadas, o asilo se sustentou graças ao esforço de benfeitores da elite local, doações da comunidade, trabalho voluntário e das pessoas acolhidas, sempre mantendo sua vocação de serviço social. Sua importância cultural e social foi reconhecida ao longo dos anos, com a comunidade de Pelotas valorizando o espaço como um símbolo de caridade, cuidado e história.')">
+<img src="https://diariodamanhapelotas.com.br/site/wp-content/uploads/2015/07/Asilo04.jpg" alt="imagem do asilo de mendigos de Pelotas">     <h2>Arquitetura e importância</h2>
+  </div>
+  </div>
+</section>
+<!-- Estrutura do Modal, aba que abre e fecha -->
+<div id="meuModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModal()">&times;</span>
+    <p id="textoModal">Texto aqui...</p>
+  </div>
+</div>
+<!--parte utilizando java para abrir e fechar-->
+<script>
+  function abrirModal(texto) {
+    document.getElementById('textoModal').innerText = texto;
+    document.getElementById('meuModal').style.display = 'block';
+  }
+
+  function fecharModal() {
+    document.getElementById('meuModal').style.display = 'none';
+  }
+
+  // Fecha o modal ao clicar fora dele
+  window.onclick = function(event) {
+    const modal = document.getElementById('meuModal');
+    if (event.target == modal) {
+      fecharModal();
+    }
+  }
+</script>
+
+<div class="como-ajudar-container">
+  <div class="lado-esquerdo">
+    <section id="comoajudar">
+      <h3>COMO AJUDAR</h3>
+      <p>
+        Pequenos gestos transformam vidas. Você pode fazer parte dessa rede de cuidado e solidariedade. Seja com seu tempo, uma doação ou uma simples ação de divulgação, sua ajuda é essencial para que o Asilo de Mendigos de Pelotas continue acolhendo quem mais precisa.
+      </p>
+    </section>
+
+    <div class="decoracao">
+      <img src="https://cdn-icons-png.flaticon.com/512/2904/2904948.png" alt="Ícone 1">
+      <img src="https://cdn-icons-png.flaticon.com/512/1742/1742553.png" alt="Ícone 2">
+    </div>
+  </div>
+
+  <div class="lado-direito">
+    <div class="bloco-redondo">
+      <h4>SEJA UM DOADOR</h4>
+      <p>Toda contribuição faz a diferença. Doações em dinheiro, alimentos, roupas ou produtos de higiene são sempre bem-vindas</p>
+      <p>Doações físicas podem ser entregues diretamente na sede</p>
+    </div>
+
+    <div class="bloco-redondo">
+      <h4>SEJA UM VOLUNTARIO</h4>
+      <p>Dedique algumas horas do seu tempo para conversar, ajudar em atividades ou colaborar com sua experiência profissional</p>
+      <p>voluntarie-se diretamente na sede ou pelo formulario no instagram da instituição</p>
+    </div>
+  </div>
+</div>
+
+<section id="eventos">
+
+<h3>EVENTOS RECENTES</h3>
+
+<div class="img-texto">
+<img src="https://i.postimg.cc/DyJmrvpL/143.png" alt="banner comemorativo de 143 anos do asilo de mendigos de Pelotas">
+<div class="conteudo-texto">
+<h4>Comemoração de 143 anos de história</h4>
+<p>Nesta terça-feira (23), o Asilo de Mendigos de Pelotas – hoje Lar de Santana – celebrou seus 143 anos de existência com uma emocionante missa conduzida pelos irmãos da Catedral São Francisco de Paula. O evento contou ainda com a presença especial do prefeito Fernando Marroni, que prestou homenagem à trajetória da instituição.</p>
+</div>
+</div>
+
+<div class="img-texto">
+<img src="https://i.postimg.cc/zXb3Cz2n/campanha-set.png" alt="banner da campanha de arrecardação de fraldas geriatricas para o asilo de mendigos de Pelotas">
+<div class="conteudo-texto">
+<h4>Arrecardação de fraldas geriatricas - campanha de setembro</h4>
+<p>O Lar de Santana está promovendo uma campanha especial de arrecadação de fraldas geriátricas durante todo o mês de setembro.<br>
+Esses itens são essenciais para garantir o conforto, a higiene e a dignidade dos idosos acolhidos.<br>
+Doações podem ser feitas diretamente no asilo: P. Antônio Zattera, 338 – Centro, Pelotas/RS.</p>
+</div>
+</div>
+<div class="img-texto">
+<img src="https://i.postimg.cc/bNDdxyVx/sanatorio.png" alt="banner da campanha de arrecardação de doações para o asilo de mendigos de Pelotas">
+<div class="conteudo-texto">
+    <h4>Campanha de arrecadação solidária</h4>
+    <p>De 27/08 a 03/09, a Atlética Sanatório estará arrecadando alimentos não perecíveis e itens de higiene pessoal para o Asilo de Mendigos de Pelotas.<br>
+    É a sua chance de fazer a diferença e contribuir com quem mais precisa!<br>
+    As doações podem ser entregues na portaria da Faculdade de Direito.</p>
+  </div>
+</div>
+</section>
+
+  <footer>
+    <div class="footer-container">
+
+      <!--coluna do Contato e Endereço -->
+      <div class="footer-col">
+        <section id="contato">
+        <h3>Contato</h3>
+        <p>Email: ampelotas@gmail.com<br>
+        Telefone: (53) 3222-4762<br>
+        Endereço: P.Antônio Zattera , 338<br>Centro, Pelotas - RS</p>
+        </section>
+      </div>
+
+      <!-- Coluna da Navegação no foot-->
+
+      <div class="footer-col">
+        <h3>Navegação</h3>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#comoajudar">Como ajudar</a></li>
+          <li><a href="#eventos">Eventos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna das Tags -->
+      <div class="footer-col">
+        <h3>Tags</h3>
+        <div class="tags">
+  <a href="#historia" class="tag">História</a>
+  <a href="#eventos" class="tag">Eventos</a>
+  <a href="#comoajudar" class="tag">Como Ajudar</a>
+  <a href="#voluntariado" class="tag">Voluntariado</a>
+  <a href="#doacoes" class="tag">Doações</a>
+  <a href="#fraldas" class="tag">Campanhas</a>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2025 ampelotas.com — Todos os direitos reservados.
+    </div>
+  </footer>
+    </body>
+    </html>
