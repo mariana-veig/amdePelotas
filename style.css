@@ -54,7 +54,6 @@ mark {
       display: flex;
       justify-content: flex-end;
       margin-top: 10px;
-      margin-left: 680px;
     }
 
     input[type="text"] {
@@ -531,3 +530,4 @@ h3 {
     text-align: center;
   }
 }
+
